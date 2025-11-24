@@ -1,0 +1,6 @@
+<ng-container *ngIf="postData"> <!-- // Only render if postData exists -->
+  <app-post-header [user]="postData.userInfo"></app-post-header>
+  <app-post-content [content]="postData.media"></app-post-content>
+  <app-post-actions></app-post-actions>
+  <app-post-comments [comments]="postData.comments"></app-post-comments>
+</ng-container>

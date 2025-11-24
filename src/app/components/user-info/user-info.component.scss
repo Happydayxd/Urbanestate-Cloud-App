@@ -1,0 +1,24 @@
+:host {
+  display: inline-flex; //Wraps the ion-chip inline
+}
+
+ion-chip {
+  --background: rgba(15, 35, 66, 0.06); // // Very light navy-tinted background
+  --color: #1f3b5b; //Text color matching app brand
+  border-radius: 999px; //Pill style
+  padding-right: 10px; //Extra space after avatar and text
+}
+
+ion-avatar {
+  width: 32px;
+  height: 32px;
+}
+
+ion-avatar img {
+  object-fit: cover; //Properly crop avatar images
+}
+
+ion-label {
+  font-size: 13px;
+  font-weight: 600; //Make agent name stand out
+}

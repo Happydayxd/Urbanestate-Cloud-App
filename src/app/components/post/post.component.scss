@@ -1,0 +1,34 @@
+:host {
+  display: block; //Each <app-post> acts as a card block
+  padding: 16px; //Inner spacing inside the card
+  margin-bottom: 20px; //Space under each card
+
+  background: #ffffff; // White card like login/register forms
+  border-radius: 18px; //Rounded corners
+
+  border: 1px solid rgba(12, 27, 50, 0.12); //Soft navy border (related to #0b172a)
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22); //Subtle depth shadow
+
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+              border-color 0.18s ease; //Smooth hover animation
+
+  &:hover { //Card hover/tap effect
+    transform: translateY(-3px); //Slight lift
+    border-color: rgba(27, 128, 94, 0.35); //Green accent border (#1b805e)
+    box-shadow: 0 16px 32px rgba(27, 128, 94, 0.25); //Green-tinted glow
+  }
+}
+
+// Spacing between post sections
+app-post-header,
+app-post-content,
+app-post-actions,
+app-post-comments {
+  display: block;
+  margin-bottom: 14px;
+}
+
+// Last section no bottom margin
+app-post-comments {
+  margin-bottom: 0;
+}

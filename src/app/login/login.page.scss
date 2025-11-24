@@ -1,0 +1,93 @@
+// Full-screen background & centering
+.login-content {
+  --background: linear-gradient(135deg, #0b172a 0%, #1f3b5b 40%, #1b805e 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Wrapper to make centering work across devices
+.login-wrapper {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// The card that holds the login form
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px 20px 28px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+// App title & tagline
+.app-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1f3b5b;
+}
+
+.tagline {
+  margin: 6px 0 18px;
+  font-size: 13px;
+  color: #7a7a7a;
+}
+
+// Form fields
+.form-field {
+  text-align: left;
+  margin-bottom: 14px;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #d3d7e0;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      border-color: #1b805e;
+      box-shadow: 0 0 0 2px rgba(27, 128, 94, 0.15);
+    }
+  }
+}
+
+// Error message
+.error {
+  color: #e63946;
+  font-size: 13px;
+  margin: 4px 0 8px;
+}
+
+// Button styling (uses Ionic primary, just tweak spacing)
+ion-button {
+  margin-top: 4px;
+  --border-radius: 12px;
+  --box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+}
+
+// Helper text under the button
+.helper-text {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #8a8a8a;
+}

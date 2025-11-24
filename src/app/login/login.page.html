@@ -1,0 +1,53 @@
+<ion-header [translucent]="true"> <!-- Top header bar for the page -->
+  <ion-toolbar> <!-- Ionic toolbar container -->
+    <ion-title>Sign in</ion-title> <!-- Page title shown in the top bar -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-content"> <!-- Fullscreen content area with custom SCSS class -->
+
+  <!-- Main centered wrapper -->
+  <div class="login-wrapper"> <!-- Wrapper that centers the login card on the screen -->
+
+    <!-- Login card -->
+    <div class="login-card"> <!-- Visual card holding the login UI -->
+      <h1 class="app-name">UrbanEstate</h1> <!-- App brand name -->
+      <p class="tagline"> <!-- Short description under the brand -->
+        Sign in to manage your favourite homes and viewing bookings.
+      </p>
+
+      <!-- Email input field -->
+      <div class="form-field"> <!-- Form group for the email field -->
+        <label for="email">Email</label> <!-- Label for accessibility -->
+        <input id="email" type="text" placeholder="you@example.com" #email /> <!-- Input for email; #email allows TS to read the value -->
+      </div>
+
+      <!-- Password input field -->
+      <div class="form-field"> <!-- Form group for the password field -->
+        <label for="password">Password</label> <!-- Label for accessibility -->
+        <input
+          id="password"
+          type="password"
+          placeholder="••••••••"
+          #pass
+        /> <!-- Input for password; #pass lets TS access the value -->
+      </div>
+
+      <!-- Error message display -->
+      <p class="error" *ngIf="error !== ''"> <!-- Shows error text only if error string is not empty -->
+        {{ error }} <!-- Angular interpolation to display the error from TS -->
+      </p>
+
+      <!-- Login button -->
+      <ion-button expand="block" (click)="login(email.value, pass.value)"> <!-- Calls login() in TS with input values -->
+        LOGIN <!-- Button text -->
+      </ion-button>
+
+      <!-- Additional helper text below -->
+      <p class="helper-text"> <!-- Small note for new users -->
+        New here? You can create your account later from the profile tab.
+      </p>
+    </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,28 @@
+:host {
+
+  .properties-content {
+    --background: linear-gradient(135deg, #0b172a 0%, #1f3b5b 40%, #1b805e 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px 40px;
+    box-sizing: border-box;
+  }
+
+  /* Wrapper that centers everything */
+  .properties-wrapper {
+    width: 100%;
+    max-width: 900px;     // Center and limit width
+    margin: 0 auto;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 12px 0 0;     // Adds space below header
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,4 @@
+<div *ngFor = 'let i of postContent'>
+<img [src]="i.src" *ngIf = "i.type === 'image'"/>
+<video [src]="i.src" controls autoplay *ngIf = "i.type === 'video'"></video>
+</div>

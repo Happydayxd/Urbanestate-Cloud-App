@@ -1,0 +1,102 @@
+.booking-content {
+  --background: linear-gradient(135deg, #0b172a 0%, #1f3b5b 40%, #1b805e 100%); // Same gradient as other screens
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; // Start from top, scroll down if needed
+}
+
+.booking-wrapper {
+  width: 100%;
+  max-width: 900px; // Nice max width for tablet/web
+  padding: 24px;
+  margin: 0 auto;
+}
+
+/* Card that holds the entire booking form */
+.booking-card {
+  background: #ffffff; // White card, same style as login/register
+  border-radius: 20px;
+  padding: 20px 18px 24px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* Titles and text */
+.title {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f3b5b; // Dark teal brand colour
+}
+
+.subtitle {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: #7a7a7a;
+}
+
+/* Form layout */
+.form-field {
+  margin-bottom: 14px;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+  }
+
+  .required {
+    color: #e63946; // Red asterisk for required fields
+    margin-left: 3px;
+  }
+}
+
+/* Ion items styled like clean inputs */
+.field-item {
+  --background: #f7f8fb; // Light grey input background
+  --border-radius: 12px;
+  --padding-start: 10px;
+  --inner-padding-end: 10px;
+  border: 1px solid #d3d7e0;
+}
+
+/* Extra height for the notes textarea row */
+.textarea-item {
+  align-items: flex-start;
+}
+
+/* Row for date & time (stack on mobile, side-by-side on tablet) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr; // One column by default
+  gap: 10px;
+}
+
+/* Message after submission */
+.message {
+  margin: 6px 0 8px;
+  font-size: 13px;
+  color: #1b805e; // Green success tone
+}
+
+/* Submit button */
+.submit-button {
+  margin-top: 4px;
+  --border-radius: 14px;
+  --box-shadow: 0 10px 22px rgba(37, 99, 235, 0.45); // Blue glow like login
+}
+
+/* Helper text */
+.helper {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #8a8a8a;
+}
+
+/* Tablet and up: place Date and Time side-by-side */
+@media (min-width: 768px) {
+  .form-row {
+    grid-template-columns: repeat(2, 1fr); // Two columns
+  }
+}

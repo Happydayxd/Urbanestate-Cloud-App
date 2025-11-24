@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+div {
+  margin-bottom: 0; //No extra margin between media items
+}
+
+img,
+video {
+  width: 100%; //Full width of the card
+  border-radius: 14px; //Rounded media corners to match card style
+  display: block;
+  object-fit: cover; //Crop nicely without distortion
+}
+
+img {
+  max-height: 260px; //Limit image height for better layout
+}
+
+video {
+  max-height: 260px; //Same height rule for videos
+}

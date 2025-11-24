@@ -1,0 +1,28 @@
+:host {
+  ul {
+    list-style-type: none; //Remove bullet points
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 6px; //Space between comment rows
+  }
+
+  strong {
+    display: block; //Put label on its own line
+    font-size: 13px;
+    color: #1f3b5b; //Dark teal from palette
+    font-weight: 600;
+  }
+
+  small {
+    display: block; //Second line with more detail
+    font-size: 12px;
+    color: #7a7a7a; //Soft grey
+  }
+
+  li:last-child {
+    margin-bottom: 0; //No margin after last item
+  }
+}

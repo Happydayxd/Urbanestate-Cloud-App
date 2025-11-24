@@ -1,0 +1,140 @@
+.home-content {
+  --background: linear-gradient(135deg, #0b172a 0%, #1f3b5b 40%, #1b805e 100%); // Same gradient as login/register
+  display: flex; // Let content center nicely
+  justify-content: center;
+  align-items: flex-start; // // Start from top (page scrolls down)
+}
+
+.home-wrapper {
+  width: 100%;
+  max-width: 900px; // Limit width on bigger screens (tablet/web)
+  padding: 24px;
+  margin: 0 auto;
+  color: #ffffff; // Default text colour on gradient
+}
+
+/* HERO section ------------------------------------------------------------- */
+
+.home-hero {
+  text-align: center;
+  margin-bottom: 26px;
+
+  .brand {
+    font-size: 26px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .headline {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .subheadline {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 16px;
+  }
+
+  .cta-button {
+    --border-radius: 999px;
+    --box-shadow: 0 12px 30px rgba(37, 99, 235, 0.6);
+  }
+}
+
+/* ABOUT section ------------------------------------------------------------ */
+
+.home-about {
+  background: rgba(8, 17, 32, 0.65); // Dark translucent panel on gradient
+  border-radius: 20px;
+  padding: 18px 16px 20px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+  margin-bottom: 22px;
+}
+
+.home-about h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.about-text {
+  margin: 4px 0 10px;
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: 0.9;
+}
+
+/* Small feature cards inside the About section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr; // One column on mobile
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.about-card {
+  background: rgba(13, 30, 57, 0.85);
+  border-radius: 14px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  h3 {
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.9;
+  }
+}
+
+/* QUICK ACTION cards ------------------------------------------------------- */
+
+.home-actions {
+  display: grid;
+  grid-template-columns: 1fr; // Single column on phones
+  gap: 14px;
+}
+
+.action-card {
+  background: rgba(8, 17, 32, 0.9);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  h3 {
+    margin: 0 0 4px;
+    font-size: 16px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.85;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Tablet and up: two-column layout for about-grid and action cards --------- */
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: repeat(3, 1fr); // Three feature cards in a row
+  }
+
+  .home-actions {
+    grid-template-columns: repeat(2, 1fr); // Two quick-link cards per row
+  }
+}

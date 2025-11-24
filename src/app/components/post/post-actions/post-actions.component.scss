@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  padding: 10px 0;
+}
+
+.actions-wrapper {
+  display: flex;
+  justify-content: flex-end;   // Move all icons to the right
+  align-items: center;
+  gap: 18px;                   // Space between icons
+  padding-right: 10px;
+}
+
+.actions-wrapper fa-icon {
+  font-size: 20px;
+  color: #1f3b5b;              // Same blue theme as UrbanEstate
+  transition: 0.2s ease-in-out;
+}
+
+.actions-wrapper fa-icon:hover {
+  opacity: 0.6;
+  transform: scale(1.08);
+}

@@ -1,17 +1,117 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true"> <!-- Header bar for the Bookings tab -->
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title>Bookings - UrbaneState</ion-title> <!-- Title shown in the top bar -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="booking-content"> <!-- Main content with gradient background -->
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div class="booking-wrapper"> <!-- Centers content and limits width -->
+
+    <!-- Booking card -->
+    <div class="booking-card"> <!-- White card that contains the entire form -->
+
+      <h1 class="title">Book a Viewing</h1> <!-- Main heading -->
+      <p class="subtitle">
+        Choose a property and request a date and time for your viewing appointment.
+      </p>
+
+      <!-- Property selector -->
+      <div class="form-field">
+        <label>Property<span class="required">*</span></label> <!-- Required field label -->
+        <ion-item lines="none" class="field-item"> <!-- Ion item for property select -->
+          <ion-select
+            interface="popover"
+            placeholder="Select a property"
+            [(ngModel)]="booking.property"
+          > <!-- Binds selected property to booking.property -->
+            <ion-select-option
+              *ngFor="let p of propertyOptions"
+              [value]="p"
+            >
+              {{ p }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <!-- Date and time side by side (on mobile they stack nicely) -->
+      <div class="form-row">
+        <div class="form-field">
+          <label>Date<span class="required">*</span></label>
+          <ion-item lines="none" class="field-item">
+            <ion-datetime
+              presentation="date"
+              [(ngModel)]="booking.date"
+            ></ion-datetime>
+          </ion-item>
+        </div>
+
+        <div class="form-field">
+          <label>Time<span class="required">*</span></label>
+          <ion-item lines="none" class="field-item">
+            <ion-datetime
+              presentation="time"
+              [(ngModel)]="booking.time"
+            ></ion-datetime>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Name -->
+      <div class="form-field">
+        <label>Your name<span class="required">*</span></label>
+        <ion-item lines="none" class="field-item">
+          <ion-input
+            type="text"
+            placeholder="Full name"
+            [(ngModel)]="booking.name"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Email -->
+      <div class="form-field">
+        <label>Email</label>
+        <ion-item lines="none" class="field-item">
+          <ion-input
+            type="email"
+            placeholder="you@example.com"
+            [(ngModel)]="booking.email"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Notes -->
+      <div class="form-field">
+        <label>Notes</label>
+        <ion-item lines="none" class="field-item textarea-item">
+          <ion-textarea
+            autoGrow="true"
+            placeholder="Any questions or details the agent should know..."
+            [(ngModel)]="booking.notes"
+          ></ion-textarea>
+        </ion-item>
+      </div>
+
+      <!-- Message after submit -->
+      <p class="message" *ngIf="bookingMessage !== ''"> <!-- Shows success or validation message -->
+        {{ bookingMessage }}
+      </p>
+
+      <!-- Submit button -->
+      <ion-button
+        expand="block"
+        class="submit-button"
+        (click)="submitBooking()"
+      >
+        REQUEST VIEWING
+      </ion-button>
+
+      <p class="helper">
+        This booking form demonstrates how a viewing request could be sent to Firestore in a real app.
+      </p>
+
+    </div>
+  </div>
 </ion-content>

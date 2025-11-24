@@ -1,0 +1,53 @@
+<ion-header [translucent]="true"> <!-- Top header bar -->
+  <ion-toolbar> <!-- Toolbar container -->
+    <ion-title>Register</ion-title> <!-- Title shown in the header -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="register-content"> <!-- Fullscreen area with custom SCSS -->
+
+  <!-- Centering wrapper -->
+  <div class="register-wrapper"> <!-- Centers the registration card -->
+
+    <!-- Registration card UI -->
+    <div class="register-card"> <!-- White rounded card containing the form -->
+      <h1 class="app-name">UrbanEstate</h1> <!-- Same brand as login screen -->
+      <p class="tagline"> <!-- Short description below the title -->
+        Create your account to start browsing and booking properties.
+      </p>
+
+      <!-- Email field -->
+      <div class="form-field"> <!-- Wrapper for the email form control -->
+        <label for="email">Email</label> <!-- Label for accessibility -->
+        <input id="email" type="text" placeholder="you@example.com" #email /> <!-- Email input -->
+      </div>
+
+      <!-- Password field -->
+      <div class="form-field"> <!-- Wrapper for the password input -->
+        <label for="password">Password</label> <!-- Label above input -->
+        <input
+          id="password"
+          type="password"
+          placeholder="Create a password"
+          #pass
+        /> <!-- Password input field -->
+      </div>
+
+      <!-- Error message -->
+      <p class="error" *ngIf="error !== ''"> <!-- Only show when TS sets an error -->
+        {{ error }} <!-- Displays the error message -->
+      </p>
+
+      <!-- Register button -->
+      <ion-button expand="block" (click)="register(email.value, pass.value)"> <!-- Calls register() method in TS -->
+        REGISTER <!-- Button text -->
+      </ion-button>
+
+      <!-- Helper text -->
+      <p class="helper-text"> <!-- Simple footer text -->
+        Already have an account? You can sign in from the login page.
+      </p>
+    </div>
+
+  </div>
+</ion-content>

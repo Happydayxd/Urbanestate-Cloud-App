@@ -1,17 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Properties <fa-icon [icon]="faHouse"></fa-icon>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="properties-content">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- Centering wrapper -->
+  <div class="properties-wrapper">
+
+    <ul>
+      <li *ngFor="let post of data">
+        <div>
+          <app-post [post]="post"></app-post>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
 </ion-content>

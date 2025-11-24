@@ -1,17 +1,82 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+<ion-header [translucent]="true"> <!-- Top header bar for the Home tab -->
+  <ion-toolbar> <!-- Toolbar container -->
+    <ion-title>Welcome to UbraneState</ion-title> <!-- Header title -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="home-content"> <!-- Main content area -->
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="home-wrapper"> <!-- Centers and constrains content width -->
+
+    <!-- HERO: Brand + main call to action -->
+    <section class="home-hero"> <!-- Top hero section -->
+      <h1 class="brand">URBANESTATE</h1> <!-- App brand -->
+      <p class="headline">Find your next home with a few taps.</p> <!-- Main headline -->
+      <p class="subheadline"> <!-- Short description -->
+        Browse properties for sale across Ireland, save your favourites, and book viewings directly from your phone.
+      </p>
+
+      <ion-button
+        class="cta-button"
+        expand="block"
+        routerLink="/tabs/tab2"
+      > <!-- Takes user to Properties tab -->
+        BROWSE PROPERTIES
+      </ion-button>
+    </section>
+
+    <!-- ABOUT: who we are / what this app is -->
+    <section class="home-about"> <!-- About section explaining the app -->
+      <h2>About UrbanEstate</h2> <!-- Section title -->
+      <p class="about-text">
+        UrbanEstate is a modern real estate app designed for the Irish market. It connects buyers and renters with
+        trusted local agents, making it easy to compare homes, view details, and schedule a visit in minutes.
+      </p>
+      <p class="about-text">
+        This version of the app is a learning project built with Ionic, Angular, Firebase Authentication and responsive
+        design – showing how a real property platform could look and behave on mobile devices.
+      </p>
+
+      <div class="about-grid"> <!-- Three key feature cards -->
+        <div class="about-card">
+          <h3>Local Irish Listings</h3>
+          <p>See example properties from Dublin, Drogheda, Galway and more – all presented like real adverts.</p>
+        </div>
+
+        <div class="about-card">
+          <h3>Simple & Secure Login</h3>
+          <p>Users sign in with Firebase Authentication, keeping access to favourites and bookings secure.</p>
+        </div>
+
+        <div class="about-card">
+          <h3>Bookings & Viewings</h3>
+          <p>Each property can be extended with a booking form so users can request a viewing slot quickly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK LINKS: cards to main tabs -->
+    <section class="home-actions"> <!-- Quick navigation cards -->
+      <div class="action-card" routerLink="/tabs/tab2"> <!-- Properties (Tab2) -->
+        <h3>Properties</h3>
+        <p>View all homes currently available in the app’s property feed.</p>
+      </div>
+
+      <div class="action-card" routerLink="/tabs/tab2"> <!-- Favourites – linked to same tab for now -->
+        <h3>Favourites</h3>
+        <p>Use the heart tab below to access the homes you have saved.</p>
+      </div>
+
+      <div class="action-card" routerLink="/tabs/tab3"> <!-- Bookings tab -->
+        <h3>Bookings</h3>
+        <p>Check and manage your upcoming viewing appointments.</p>
+      </div>
+
+      <div class="action-card" routerLink="/tabs/tab4"> <!-- Profile tab -->
+        <h3>Profile</h3>
+        <p>Manage your account details and sign out securely.</p>
+      </div>
+    </section>
+
+  </div>
 </ion-content>

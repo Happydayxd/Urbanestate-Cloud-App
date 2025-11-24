@@ -1,0 +1,16 @@
+:host {
+  display: flex; //Header is a row: left (agent) + right (menu icon)
+  justify-content: space-between; //Space between user info and kebab icon
+  align-items: center; //Vertically align center
+  gap: 8px; //Small gap between elements
+}
+
+.action {
+  color: #7a7a7a; //Grey for the kebab icon
+  font-size: 18px;
+}
+.user-info {
+  display: flex; //User info is a row: avatar + text
+  align-items: center; //Vertically align center
+  gap: 8px; //Small gap between avatar and text
+}
