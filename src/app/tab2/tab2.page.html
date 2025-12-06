@@ -3,6 +3,13 @@
     <ion-title>
       Properties <fa-icon [icon]="faHouse"></fa-icon>
     </ion-title>
+
+    <!-- Right-side button to open Add Property form -->
+    <ion-buttons slot="end">
+      <ion-button (click)="goToAddProperty()">
+        + Add
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
