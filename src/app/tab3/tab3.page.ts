@@ -1,18 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonButton,
-  IonItem,
-  IonLabel,
-  IonInput,
-  IonTextarea,
-  IonSelect,
-  IonSelectOption,
-  IonDatetime
-} from '@ionic/angular/standalone'; // Ionic UI components used in the template
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonLabel, IonInput, IonTextarea, IonSelect, IonSelectOption, IonDatetime } from '@ionic/angular/standalone'; // Ionic UI components used in the template
 import { CommonModule } from '@angular/common'; // For ngIf, ngFor
 import { FormsModule } from '@angular/forms'; // For [(ngModel)] bindings
 
@@ -21,22 +8,7 @@ import { FormsModule } from '@angular/forms'; // For [(ngModel)] bindings
   templateUrl: './tab3.page.html',
   styleUrls: ['./tab3.page.scss'],
   standalone: true, // Standalone Angular component
-  imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonButton,
-    IonItem,
-    IonLabel,
-    IonInput,
-    IonTextarea,
-    IonSelect,
-    IonSelectOption,
-    IonDatetime,
-    CommonModule,
-    FormsModule
-  ]
+  imports: [ IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonLabel, IonInput, IonTextarea, IonSelect, IonSelectOption, IonDatetime, CommonModule, FormsModule ]
 })
 export class Tab3Page {
 

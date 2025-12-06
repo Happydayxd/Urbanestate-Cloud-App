@@ -1,0 +1,125 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Add Property</ion-title> <!-- // Page title -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="add-content">
+
+  <div class="add-wrapper"> <!-- // Center + max-width -->
+
+    <div class="add-card"> <!-- // White card -->
+
+      <h1 class="title">New Property Listing</h1>
+      <p class="subtitle">
+        Fill in the details below to add a new property to the Firestore database.
+      </p>
+
+      <!-- Agent name -->
+      <div class="form-field">
+        <label>Agent name<span class="required">*</span></label>
+        <ion-item lines="none" class="field-item">
+          <ion-input
+            type="text"
+            placeholder="e.g. Emma Murphy - Estate Agent"
+            [(ngModel)]="form.agentName"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Agent location -->
+      <div class="form-field">
+        <label>Agent location<span class="required">*</span></label>
+        <ion-item lines="none" class="field-item">
+          <ion-input
+            type="text"
+            placeholder="e.g. Dublin, Ireland"
+            [(ngModel)]="form.agentLocation"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Agent profile image (optional) -->
+      <div class="form-field">
+        <label>Agent profile image (optional)</label>
+        <ion-item lines="none" class="field-item">
+          <ion-input
+            type="text"
+            placeholder="e.g. assets/img/agent1.jpg or https://..."
+            [(ngModel)]="form.profileImage"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Property main image URL -->
+      <div class="form-field">
+        <label>Property image URL<span class="required">*</span></label>
+        <ion-item lines="none" class="field-item">
+          <ion-input
+            type="text"
+            placeholder="Paste an image URL from Unsplash or your assets folder"
+            [(ngModel)]="form.imageUrl"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Listing Info -->
+      <div class="form-field">
+        <label>Listing info<span class="required">*</span></label>
+        <ion-item lines="none" class="field-item textarea-item">
+          <ion-textarea
+            autoGrow="true"
+            placeholder="e.g. €310,000 • 2 Bed • 1 Bath • 75 m²"
+            [(ngModel)]="form.listingInfo"
+          ></ion-textarea>
+        </ion-item>
+      </div>
+
+      <!-- Location details -->
+      <div class="form-field">
+        <label>Location details</label>
+        <ion-item lines="none" class="field-item textarea-item">
+          <ion-textarea
+            autoGrow="true"
+            placeholder="e.g. Overlooking the River Lee, close to city centre..."
+            [(ngModel)]="form.locationInfo"
+          ></ion-textarea>
+        </ion-item>
+      </div>
+
+      <!-- Buyer notes -->
+      <div class="form-field">
+        <label>Buyer notes</label>
+        <ion-item lines="none" class="field-item textarea-item">
+          <ion-textarea
+            autoGrow="true"
+            placeholder="e.g. Ideal for first time buyers, pets allowed, etc."
+            [(ngModel)]="form.buyerInfo"
+          ></ion-textarea>
+        </ion-item>
+      </div>
+
+      <!-- Message -->
+      <p class="message" *ngIf="message !== ''">
+        {{ message }}
+      </p>
+
+      <!-- Submit button -->
+      <ion-button
+        expand="block"
+        class="submit-button"
+        [disabled]="saving"
+        (click)="submit()"
+      >
+        {{ saving ? 'SAVING...' : 'ADD PROPERTY' }}
+      </ion-button>
+
+      <p class="helper">
+        This page demonstrates how a property listing form can write data
+        directly into a Firestore collection.
+      </p>
+
+    </div>
+  </div>
+
+</ion-content>

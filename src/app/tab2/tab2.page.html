@@ -9,16 +9,14 @@
 <ion-content [fullscreen]="true" class="properties-content">
 
   <!-- Centering wrapper -->
-  <div class="properties-wrapper">
+  <!-- Optional loading / error states -->
+  <p *ngIf="loading" class="empty-message">Loading properties...</p>
+  <p *ngIf="!loading && error" class="empty-message">{{ error }}</p>
 
-    <ul>
-      <li *ngFor="let post of data">
-        <div>
-          <app-post [post]="post"></app-post>
-        </div>
-      </li>
-    </ul>
-
-  </div>
-
+  <ul *ngIf="!loading && !error">
+    <li *ngFor="let post of data">
+      <app-post [post]="post"></app-post>
+    </li>
+  </ul>
+  <!-- <button (click)="addPost()">Add Post</button> -->
 </ion-content>
