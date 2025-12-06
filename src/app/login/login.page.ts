@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonButton, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Identity } from '../service/identity/identity';
-import { Router } from '@angular/router'; // <-- add Router
+import { Router } from '@angular/router'; // add Router
 
 @Component({
   selector: 'app-login',

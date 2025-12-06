@@ -9,8 +9,7 @@ import { MapModule } from '../app.component';
   templateUrl: './maps.page.html',
   styleUrls: ['./maps.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, MapModule
-  ]
+  imports: [ IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, MapModule ]
 })
 export class MapsPage implements OnInit {
   lat: number = 37.7749;  // Default latitude (San Francisco)
@@ -20,6 +19,4 @@ export class MapsPage implements OnInit {
 
   ngOnInit() {
   }
-
-
 }
