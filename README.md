@@ -98,23 +98,35 @@ shown during lectures, adapted for a real-estate use case.
 
 src/
 ├── app/
+
 │ ├── tabs/ // Tab navigation
+
 │ ├── tab1/ // Home
+
 │ ├── tab2/ // Properties
+
 │ ├── tab3/ // Bookings
+
 │ ├── tab4/ // Profile
+
 │ ├── login/ // Login page
+
 │ ├── register/ // Register page
+
 │ ├── add-property/ // Add Property form (CA2)
+
 │ ├── maps/ // Map feature (CA2)
+
 │ ├── components/ // Reusable UI components
+
 │ ├── service/
+
 │ │ ├── posts/ // Firestore logic
+
 │ │ └── identity/ // Firebase Authentication
+
 │ └── app.routes.ts // Application routing
 
-
----
 
 ## 6. Git Version Control
 
