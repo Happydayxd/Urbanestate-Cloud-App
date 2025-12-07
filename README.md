@@ -6,8 +6,6 @@ UrbanEstate is a mobile application developed using **Ionic and Angular** for th
 The project covers both **CA1** (core application development) and **CA2**
 (Firebase database integration and map features).
 
----
-
 ## 1. Project Description
 
 UrbanEstate is a real-estate mobile application that allows users to:
@@ -20,8 +18,6 @@ UrbanEstate is a real-estate mobile application that allows users to:
 
 The application follows a **tab-based navigation structure** similar to examples
 shown during lectures, adapted for a real-estate use case.
-
----
 
 ## 2. Assessment Coverage
 
@@ -39,8 +35,6 @@ shown during lectures, adapted for a real-estate use case.
   - Add new property listings
 - Add Property form
 - Map feature
-
----
 
 ## 3. Main Features
 
@@ -75,14 +69,11 @@ shown during lectures, adapted for a real-estate use case.
 - Demonstrates how property locations can be visualised
 - Integrated as an Ionic page
 
----
-
 ## 4. Firebase & Firestore Usage
 
 ### Firebase Authentication
 - Initialised using `initializeApp`
-- Login and registration via `signInWithEmailAndPassword`
-  and `createUserWithEmailAndPassword`
+- Login and registration via `signInWithEmailAndPassword` and `createUserWithEmailAndPassword`
 - Implemented in the `Identity` service
 
 ### Firestore Database
@@ -91,8 +82,6 @@ shown during lectures, adapted for a real-estate use case.
   - `getAllPosts()` – Reads property documents from Firestore
   - `addPost(post)` – Writes new property documents
 - Uses Promise-based logic aligned with lecture examples
-
----
 
 ## 5. Project Structure
 
@@ -113,9 +102,6 @@ src/
 │ │ └── identity/ // Firebase Authentication
 │ └── app.routes.ts // Application routing
 
-
----
-
 ## 6. Git Version Control
 
 The project uses a structured Git workflow:
@@ -126,13 +112,11 @@ The project uses a structured Git workflow:
 
 This workflow demonstrates correct use of version control and incremental development.
 
----
-
 ## 7. How to Run the Project
 
-```bash
 npm install
 ionic serve
+
 
 Ensure Firebase configuration is valid and Firestore rules allow
 read/write access for development.
