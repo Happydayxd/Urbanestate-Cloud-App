@@ -17,26 +17,26 @@ export class Posts {
   private db: any;
 
   constructor() {
-    this.app = initializeApp(this.firebaseConfig);   // // Initialise Firebase app
-    this.db = getFirestore(this.app);                // // Get Firestore instance
+    this.app = initializeApp(this.firebaseConfig);   //Initialise Firebase app
+    this.db = getFirestore(this.app);                //Get Firestore instance
   }
 
   async getAllPosts() {
-    this.data = [];                                  // // Clear local cache
-    let _this = this;                                // // Keep 'this' (lecture style)
+    this.data = [];                                  //Clear local cache
+    let _this = this;                                //Keep 'this' (lecture style)
 
-    const querySnapshot = await getDocs(collection(this.db, "post")); // // Read 'post' collection
+    const querySnapshot = await getDocs(collection(this.db, "post")); //Read 'post' collection
     querySnapshot.forEach((doc) => {
-      let postData: any = doc.data();                // // Get document data as object
-      postData.id = doc.id;                          // // Attach Firestore document ID
-      _this.data.push(postData);                     // // Store in local array
+      let postData: any = doc.data();                //Get document data as object
+      postData.id = doc.id;                          //Attach Firestore document ID
+      _this.data.push(postData);                     //Store in local array
     });
 
-    return this.data;                                // // Return all posts
+    return this.data;                                //Return all posts
   }
 
   getPostById(id: number) {
-    return this.data.find((post: any) => post.id == id); // // Find post in local cache
+    return this.data.find((post: any) => post.id == id); //Find post in local cache
   }
 
   // ---------------------------------------------------------------------------
@@ -46,19 +46,19 @@ export class Posts {
   // ---------------------------------------------------------------------------
   async addPost(post: any) {
     try {
-      const docRef = await addDoc(collection(this.db, "post"), post); // // Insert into Firestore
-      console.log("Document written with ID: ", docRef.id);           // // Log new document ID
-      return docRef.id;                                               // // Return ID to caller
+      const docRef = await addDoc(collection(this.db, "post"), post); //Insert into Firestore
+      console.log("Document written with ID: ", docRef.id);           //Log new document ID
+      return docRef.id;                                               //Return ID to caller
     } catch (e) {
-      console.error("Error adding document: ", e);                     // // Log error if any
-      throw e;                                                         // // Re-throw so caller can handle
+      console.error("Error adding document: ", e);                     //Log error if any
+      throw e;                                                         //Re-throw so caller can handle
     }
   }
 
   // ---------------------------------------------------------------------------
   // Optional: seedDemoPost()
-  // If you want to KEEP the original hard-coded example from the lecture,
-  // you could move it here and call this method only for testing.
+  // If we want to KEEP the original hard-coded example from the lecture,
+  // We could move it here and call this method only for testing.
   // ---------------------------------------------------------------------------
   async seedDemoPost() {
     try {

@@ -25,30 +25,50 @@ export class Tab2Page implements OnInit {
   faMessage = faPaperPlane;
   faCaretDown = faCaretDown;
 
-  data: any[] = [];       // ✅ must be an array
-  loading = true;         // optional, to show spinner later
-  error = '';             // optional, for messages
+  data: any[] = [];       //must be an array
+  loading = true;         //optional, to show spinner later
+  error = '';             //optional, for messages
 
   constructor(
-    private posts: Posts,   // service that talks to Firestore
-    private router: Router  // used to navigate to Add Property form
-  ) {}
+    private posts: Posts,   //service that talks to Firestore
+    private router: Router  //used to navigate to Add Property form
+  ) { }
 
   // -------------------------------------------------------------------
-  // ngOnInit - basic, Promise-based version (closer to lecturer style)
+  // ngOnInit()
+  // Called the first time this tab component is created.
+  // We call loadPosts() here to load the properties for the first time.
   // -------------------------------------------------------------------
   ngOnInit() {
-    this.loading = true;
-    this.error = '';
+    this.loadPosts(); // // Initial Firestore load when the tab is created
+  }
+
+  // -------------------------------------------------------------------
+  // ionViewWillEnter()
+  // Ionic lifecycle hook.
+  // Called EVERY TIME we navigate back to this tab.
+  // This is what makes the list refresh after adding a new property.
+  // -------------------------------------------------------------------
+  ionViewWillEnter() {
+    this.loadPosts(); // // Reload properties whenever the tab becomes active
+  }
+
+  // -------------------------------------------------------------------
+  // loadPosts()
+  // Shared method that actually calls the Posts service.
+  // -------------------------------------------------------------------
+  loadPosts() {
+    this.loading = true;       //Show "Loading properties..." message
+    this.error = '';           // Clear any previous error
 
     this.posts.getAllPosts()
-      .then((posts: any[]) => {           // when Firestore finishes
-        this.data = posts;                // store array in data[]
-        this.loading = false;             // stop loading text
+      .then((posts: any[]) => {           //When Firestore finishes successfully
+        this.data = posts;                //Save posts into the array used by *ngFor
+        this.loading = false;             //Hide loading message
       })
-      .catch((err) => {
+      .catch((err) => {                   //If something goes wrong
         console.error('Error loading posts', err);
-        this.error = 'Could not load properties.';
+        this.error = 'Could not load properties.';   //Message shown in the template
         this.loading = false;
       });
   }
@@ -58,6 +78,6 @@ export class Tab2Page implements OnInit {
   // Called from the button in the header
   // -------------------------------------------------------------------
   goToAddProperty() {
-    this.router.navigateByUrl('/add-property'); // match route path below
+    this.router.navigateByUrl('/add-property'); // Must match the route path in app.routes.ts
   }
 }
