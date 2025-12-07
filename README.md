@@ -116,10 +116,6 @@ src/
 
 │ └── app.routes.ts // Application routing
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2470f5374b8c495cf65b0bc319d2726ef18fb9a7
 ## 6. Git Version Control
 
 The project uses a structured Git workflow:
@@ -131,10 +127,6 @@ The project uses a structured Git workflow:
 This workflow demonstrates correct use of version control and incremental development.
 
 ## 7. How to Run the Project
-<<<<<<< HEAD
-
-=======
->>>>>>> 2470f5374b8c495cf65b0bc319d2726ef18fb9a7
 npm install
 ionic serve
 
@@ -142,17 +134,17 @@ ionic serve
 Ensure Firebase configuration is valid and Firestore rules allow
 read/write access for development.
 
-8. Author
-Student: Jonathan Granados
-Course: BSc in Computing
-Module: Mobile and Social Computing
-Assessment: CA1 & CA2
+## 8. Author
+- Student: Jonathan Granados
+- Course: BSc in Computing
+- Module: Mobile and Social Computing
+- Assessment: CA1 & CA2
 
-9. Status
-✔ CA1 completed
-✔ CA2 completed
-✔ Firebase integrated
-✔ Firestore database operations implemented
-✔ Map feature added
-✔ Ready for submission
+## 9. Status
+- ✔ CA1 completed
+- ✔ CA2 completed
+- ✔ Firebase integrated
+- ✔ Firestore database operations implemented
+- ✔ Map feature added
+- ✔ Ready for submission
 
