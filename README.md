@@ -138,11 +138,7 @@ The project uses a structured Git workflow:
 
 This workflow demonstrates correct use of version control and incremental development.
 
----
-
 ## 7. How to Run the Project
-
-```bash
 npm install
 ionic serve
 
