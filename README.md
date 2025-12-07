@@ -87,21 +87,39 @@ shown during lectures, adapted for a real-estate use case.
 
 src/
 ├── app/
+
 │ ├── tabs/ // Tab navigation
+
 │ ├── tab1/ // Home
+
 │ ├── tab2/ // Properties
+
 │ ├── tab3/ // Bookings
+
 │ ├── tab4/ // Profile
+
 │ ├── login/ // Login page
+
 │ ├── register/ // Register page
+
 │ ├── add-property/ // Add Property form (CA2)
+
 │ ├── maps/ // Map feature (CA2)
+
 │ ├── components/ // Reusable UI components
+
 │ ├── service/
+
 │ │ ├── posts/ // Firestore logic
+
 │ │ └── identity/ // Firebase Authentication
+
 │ └── app.routes.ts // Application routing
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2470f5374b8c495cf65b0bc319d2726ef18fb9a7
 ## 6. Git Version Control
 
 The project uses a structured Git workflow:
@@ -113,7 +131,10 @@ The project uses a structured Git workflow:
 This workflow demonstrates correct use of version control and incremental development.
 
 ## 7. How to Run the Project
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2470f5374b8c495cf65b0bc319d2726ef18fb9a7
 npm install
 ionic serve
 
