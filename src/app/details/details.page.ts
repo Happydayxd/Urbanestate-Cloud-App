@@ -14,30 +14,30 @@ import { Posts } from '../service/posts/posts';
 })
 export class DetailsPage implements OnInit {
 
-  data: any = null;      // // Will hold the selected property/post
-  loading = true;        // // Show loading state while fetching
-  error = '';            // // Error message if something goes wrong
+  data: any = null;      //Will hold the selected property/post
+  loading = true;        //Show loading state while fetching
+  error = '';            //Error message if something goes wrong
 
   constructor(
-    private route: ActivatedRoute, // // Used to read :id from the URL
-    private posts: Posts           // // Service to access Firestore posts
+    private route: ActivatedRoute, //Used to read :id from the URL
+    private posts: Posts           //Service to access Firestore posts
   ) {
 
-    // // Subscribe to route parameters (e.g. /details/ABC123)
+    //Subscribe to route parameters (e.g. /details/ABC123)
     this.route.params.subscribe(async params => {
-      const id = params['id'];                // // Get id from URL
+      const id = params['id'];                //Get id from URL
       console.log('Post ID from route:', id);
 
       try {
         this.loading = true;
         this.error = '';
 
-        // // If the Posts service has no data yet, load all posts from Firestore
+        //If the Posts service has no data yet, load all posts from Firestore
         if (!this.posts.data || this.posts.data.length === 0) {
-          await this.posts.getAllPosts();     // // Fill Posts.data array
+          await this.posts.getAllPosts();     //Fill Posts.data array
         }
 
-        const post = this.posts.getPostById(id); // // Find the post in the array
+        const post = this.posts.getPostById(id); //Find the post in the array
         console.log('Post Data:', post);
 
         if (!post) {
@@ -57,7 +57,7 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {}
 
-  // // Helper to build the title safely
+  //Helper to build the title safely
   getTitle() {
     return this.data?.userInfo?.name
       ? `Listing by: ${this.data.userInfo.name}`
