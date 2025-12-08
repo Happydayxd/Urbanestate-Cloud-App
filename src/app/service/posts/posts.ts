@@ -7,7 +7,7 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
   providedIn: 'root',
 })
 export class Posts {
-  data: any = [];
+  public data: any = [];
 
   private firebaseConfig = {
     apiKey: "AIzaSyCsk-JTvq9mxE6o-S4xokSgqs102pMLygk",
@@ -24,7 +24,6 @@ export class Posts {
   async getAllPosts() {
     this.data = [];                                  //Clear local cache
     let _this = this;                                //Keep 'this' (lecture style)
-
     const querySnapshot = await getDocs(collection(this.db, "post")); //Read 'post' collection
     querySnapshot.forEach((doc) => {
       let postData: any = doc.data();                //Get document data as object
@@ -35,10 +34,12 @@ export class Posts {
     return this.data;                                //Return all posts
   }
 
-  getPostById(id: number) {
-    return this.data.find((post: any) => post.id == id); //Find post in local cache
+  //getPostById(id: number) {
+  //  return this.data.find((post: any) => post.id == id); //Find post in local cache
+  //}
+  getPostById(id: any) {
+    return this.data.find((post: any) => post.id == id); // // == works for string/number
   }
-
   // ---------------------------------------------------------------------------
   // addPost(post)
   // Adds a NEW property document into the "post" collection.
@@ -46,7 +47,8 @@ export class Posts {
   // ---------------------------------------------------------------------------
   async addPost(post: any) {
     try {
-      const docRef = await addDoc(collection(this.db, "post"), post); //Insert into Firestore
+      const docRef = await addDoc(collection(this.db, "post"), post);
+      this.getAllPosts() //Insert into Firestore
       console.log("Document written with ID: ", docRef.id);           //Log new document ID
       return docRef.id;                                               //Return ID to caller
     } catch (e) {

@@ -28,5 +28,11 @@ export const routes: Routes = [
   {
     path: 'maps',
     loadComponent: () => import('./maps/maps.page').then( m => m.MapsPage)
+  },
+  // Dynamic route that expects an id
+  { 
+    path: 'details/:id', 
+    loadComponent: () => import('./details/details.page').then( m => m.DetailsPage)
   }
+
 ];

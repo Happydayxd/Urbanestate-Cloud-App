@@ -80,4 +80,15 @@ export class Tab2Page implements OnInit {
   goToAddProperty() {
     this.router.navigateByUrl('/add-property'); // Must match the route path in app.routes.ts
   }
+
+  // -------------------------------------------------------------------
+  // openDetails(id)
+  // Navigate to the Details page for a specific property.
+  // Called when the user taps on a property card in the list.
+  // -------------------------------------------------------------------
+  openDetails(id: any) {
+    //Path must match the route we will define in app.routes.ts
+    this.router.navigateByUrl(`/details/${id}`);
+  }
+
 }

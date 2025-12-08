@@ -21,7 +21,7 @@
   <p *ngIf="!loading && error" class="empty-message">{{ error }}</p>
 
   <ul *ngIf="!loading && !error">
-    <li *ngFor="let post of data">
+    <li *ngFor="let post of data" (click)="openDetails(post.id)">
       <app-post [post]="post"></app-post>
     </li>
   </ul>

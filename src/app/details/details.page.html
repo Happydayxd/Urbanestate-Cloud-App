@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ getTitle() }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="details-content">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ getTitle() }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="details-wrapper" *ngIf="!loading && !error && data">
+    <div class="details-card">
+
+      <!-- Property image -->
+      <div class="image-wrapper" *ngIf="data.media && data.media.length > 0">
+        <img [src]="data.media[0].src" alt="Property image" />
+      </div>
+
+      <!-- Agent / user info -->
+      <div class="agent-info">
+        <h2>{{ data.userInfo?.name }}</h2>
+        <p class="location">{{ data.userInfo?.location }}</p>
+      </div>
+
+      <!-- Structured info from comments -->
+      <div class="info-card" *ngIf="data.comments && data.comments.length > 0">
+        <h3>Listing details</h3>
+
+        <p *ngIf="data.comments[0]">
+          <strong>{{ data.comments[0].user }}:</strong>
+          {{ data.comments[0].text }}
+        </p>
+
+        <p *ngIf="data.comments[1]">
+          <strong>{{ data.comments[1].user }}:</strong>
+          {{ data.comments[1].text }}
+        </p>
+
+        <p *ngIf="data.comments[2]">
+          <strong>{{ data.comments[2].user }}:</strong>
+          {{ data.comments[2].text }}
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <p *ngIf="loading" class="details-message">Loading property details...</p>
+  <p *ngIf="!loading && error" class="details-message error">{{ error }}</p>
+</ion-content>

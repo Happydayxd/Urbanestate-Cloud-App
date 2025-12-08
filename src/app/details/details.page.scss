@@ -1,0 +1,90 @@
+:host {
+
+  .details-content {                                // // <ion-content class="details-content">
+    --background: linear-gradient(135deg,
+      #0b172a 0%,
+      #1f3b5b 40%,
+      #1b805e 100%);                                // // Reuse global gradient
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px 40px;
+    box-sizing: border-box;
+  }
+
+  .details-wrapper {                                // // Outer wrapper to constrain width
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .details-card {                                   // // White card that holds all content
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 18px 16px 22px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  }
+
+  .image-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    margin-bottom: 16px;
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .agent-info {
+    margin-bottom: 14px;
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f3b5b;
+    }
+
+    .location {
+      margin: 4px 0 0;
+      color: #666;
+      font-size: 14px;
+    }
+  }
+
+  .info-card {
+    background: #f7f9fc;
+    border-radius: 14px;
+    padding: 14px 12px;
+    margin-top: 6px;
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1f3b5b;
+    }
+
+    p {
+      margin: 4px 0;
+      font-size: 14px;
+
+      strong {
+        color: #1b805e;
+      }
+    }
+  }
+
+  .details-message {                               // // Loading / error text
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #f1f1f1;
+
+    &.error {
+      color: #ffb3b3;
+    }
+  }
+}
