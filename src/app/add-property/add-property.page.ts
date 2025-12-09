@@ -10,7 +10,7 @@ import { Posts } from '../service/posts/posts';       //Firestore posts service
   templateUrl: './add-property.page.html',
   styleUrls: ['./add-property.page.scss'],
   standalone: true,
-  imports: [ IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonTextarea, IonButton, CommonModule, FormsModule]
+  imports: [ IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonInput, IonTextarea, IonButton, CommonModule, FormsModule ]
 })
 export class AddPropertyPage {
 

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonButton, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Identity } from '../service/identity/identity';
-import { Router } from '@angular/router'; // add Router
+import { Router } from '@angular/router'; // add Router for navigation
 
 @Component({
   selector: 'app-login',
@@ -26,14 +26,14 @@ export class LoginPage implements OnInit {
   }
   // Called when the user clicks the LOGIN button
   login(email: string, pass: string) {
-     // Reset previous errors
+    // Reset previous errors
     this.error = '';
 
     // Basic front-end validation
     if (!email || !pass) {
       this.error = 'Please enter both email and password.';
       return;
-    }       
+    }
     // Call the Identity service (Firebase login)
     // identity.login(...) returns a Promise<userCredential>
     this.identity.login(email, pass)
@@ -60,4 +60,12 @@ export class LoginPage implements OnInit {
         }
       });
   }
+
+  // --------------------------------------------------------------------------
+  // Redirect to Register page
+  // --------------------------------------------------------------------------
+  goToRegister() {
+    this.router.navigateByUrl('/register');
+  }
+
 }

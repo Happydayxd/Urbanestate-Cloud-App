@@ -19,18 +19,15 @@
       <!-- Email input field -->
       <div class="form-field"> <!-- Form group for the email field -->
         <label for="email">Email</label> <!-- Label for accessibility -->
-        <input id="email" type="text" placeholder="you@example.com" #email /> <!-- Input for email; #email allows TS to read the value -->
+        <input id="email" type="text" placeholder="you@example.com" #email />
+        <!-- Input for email; #email allows TS to read the value -->
       </div>
 
       <!-- Password input field -->
       <div class="form-field"> <!-- Form group for the password field -->
         <label for="password">Password</label> <!-- Label for accessibility -->
-        <input
-          id="password"
-          type="password"
-          placeholder="••••••••"
-          #pass
-        /> <!-- Input for password; #pass lets TS access the value -->
+        <input id="password" type="password" placeholder="••••••••" #pass />
+        <!-- Input for password; #pass lets TS access the value -->
       </div>
 
       <!-- Error message display -->
@@ -39,14 +36,20 @@
       </p>
 
       <!-- Login button -->
-      <ion-button expand="block" (click)="login(email.value, pass.value)"> <!-- Calls login() in TS with input values -->
+      <ion-button expand="block" (click)="login(email.value, pass.value)">
+        <!-- Calls login() in TS with input values -->
         LOGIN <!-- Button text -->
       </ion-button>
 
       <!-- Additional helper text below -->
-      <p class="helper-text"> <!-- Small note for new users -->
-        New here? You can create your account later from the profile tab.
+      <p class="helper-text">
+        New here?
       </p>
+
+      <ion-button expand="block" fill="clear" size="small" (click)="goToRegister()">
+        Create an account
+      </ion-button>
+
     </div>
 
   </div>

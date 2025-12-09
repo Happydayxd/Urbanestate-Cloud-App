@@ -1,53 +1,147 @@
-<ion-header [translucent]="true"> <!-- Top header bar -->
-  <ion-toolbar> <!-- Toolbar container -->
-    <ion-title>Register</ion-title> <!-- Title shown in the header -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="register-content"> <!-- Fullscreen area with custom SCSS -->
+<ion-content [fullscreen]="true">
+  <div class="register-content">
+    <div class="register-wrapper">
+      <div class="register-card">
+        <h1 class="app-name">UrbanEstate</h1>
+        <p class="tagline">
+          Create your account to start browsing and booking properties.
+        </p>
 
-  <!-- Centering wrapper -->
-  <div class="register-wrapper"> <!-- Centers the registration card -->
+        <!-- Full Name -->
+        <div class="form-field">
+          <label for="fullName">Full Name</label>
+          <input
+            id="fullName"
+            type="text"
+            placeholder="Full Name"
+            #fullName
+          />
+        </div>
 
-    <!-- Registration card UI -->
-    <div class="register-card"> <!-- White rounded card containing the form -->
-      <h1 class="app-name">UrbanEstate</h1> <!-- Same brand as login screen -->
-      <p class="tagline"> <!-- Short description below the title -->
-        Create your account to start browsing and booking properties.
-      </p>
+        <!-- Phone Number -->
+        <div class="form-field">
+          <label for="phone">Phone Number</label>
+          <input
+            id="phone"
+            type="tel"
+            placeholder="+353 87 123 4567"
+            #phone
+          />
+        </div>
 
-      <!-- Email field -->
-      <div class="form-field"> <!-- Wrapper for the email form control -->
-        <label for="email">Email</label> <!-- Label for accessibility -->
-        <input id="email" type="text" placeholder="you@example.com" #email /> <!-- Email input -->
+        <!-- Age -->
+        <div class="form-field">
+          <label for="age">Age</label>
+          <input
+            id="age"
+            type="number"
+            min="16"
+            max="120"
+            placeholder="30"
+            #age
+          />
+        </div>
+
+        <!-- Address Line 1 -->
+        <div class="form-field">
+          <label for="address">Address</label>
+          <input
+            id="address"
+            type="text"
+            placeholder="123 Main Street"
+            #address
+          />
+        </div>
+
+        <!-- City -->
+        <div class="form-field">
+          <label for="city">City / Town</label>
+          <input
+            id="city"
+            type="text"
+            placeholder="Drogheda"
+            #city
+          />
+        </div>
+
+        <!-- County -->
+        <div class="form-field">
+          <label for="county">County</label>
+          <input
+            id="county"
+            type="text"
+            placeholder="Co. Louth"
+            #county
+          />
+        </div>
+
+        <!-- Eircode -->
+        <div class="form-field">
+          <label for="eircode">Eircode</label>
+          <input
+            id="eircode"
+            type="text"
+            placeholder="A92 ABC1"
+            #eircode
+          />
+        </div>
+
+        <!-- Email field -->
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="text"
+            placeholder="you@example.com"
+            #email
+          />
+        </div>
+
+        <!-- Password field -->
+        <div class="form-field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Create a password"
+            #pass
+          />
+        </div>
+
+        <!-- Error message -->
+        <p class="error" *ngIf="error !== ''">
+          {{ error }}
+        </p>
+
+        <!-- Register button -->
+        <ion-button
+          expand="block"
+          (click)="register(
+            email.value,
+            pass.value,
+            fullName.value,
+            phone.value,
+            age.value,
+            address.value,
+            city.value,
+            county.value,
+            eircode.value
+          )"
+        >
+          REGISTER
+        </ion-button>
+
+        <!-- Helper text -->
+        <p class="helper-text">
+          Already have an account? You can sign in from the login page.
+        </p>
       </div>
-
-      <!-- Password field -->
-      <div class="form-field"> <!-- Wrapper for the password input -->
-        <label for="password">Password</label> <!-- Label above input -->
-        <input
-          id="password"
-          type="password"
-          placeholder="Create a password"
-          #pass
-        /> <!-- Password input field -->
-      </div>
-
-      <!-- Error message -->
-      <p class="error" *ngIf="error !== ''"> <!-- Only show when TS sets an error -->
-        {{ error }} <!-- Displays the error message -->
-      </p>
-
-      <!-- Register button -->
-      <ion-button expand="block" (click)="register(email.value, pass.value)"> <!-- Calls register() method in TS -->
-        REGISTER <!-- Button text -->
-      </ion-button>
-
-      <!-- Helper text -->
-      <p class="helper-text"> <!-- Simple footer text -->
-        Already have an account? You can sign in from the login page.
-      </p>
     </div>
-
   </div>
 </ion-content>

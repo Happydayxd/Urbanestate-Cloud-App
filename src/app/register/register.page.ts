@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  IonContent,
-  IonHeader,
-  IonButton,
-  IonTitle,
-  IonToolbar
-} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonButton, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 import { Identity } from '../service/identity/identity';
 import { Router } from '@angular/router'; // Needed for redirect after register
@@ -28,24 +22,76 @@ export class RegisterPage implements OnInit {
     private router: Router // Allows navigation after successful register
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  register(email: string, pass: string) {
+  register(
+    email: string,
+    pass: string,
+    fullName: string,
+    phone: string,
+    age: string,
+    address: string,
+    city: string,
+    county: string,
+    eircode: string
+  ) {
+    this.error = '';  // Clear previous error message
 
-    this.error = ''; // Clear previous error
-
-    if (!email || !pass) { // Basic validation
-      this.error = 'Please enter both email and password.';
+    // ----------------------------------------------------------------------
+    // Basic validation for required fields
+    // ----------------------------------------------------------------------
+    if (!email || !pass || !fullName || !phone) {
+      this.error = 'Please fill in full name, email, password and phone.';
       return;
     }
 
-    // Call the service (Firebase register)
+    // Optional: parse age to a number (if provided)
+    const parsedAge = age ? parseInt(age, 10) : null;
+
+    // ----------------------------------------------------------------------
+    // Profile data object that will be saved in Firestore under users/{uid}
+    // ----------------------------------------------------------------------
+    const profileData = {
+      fullName,
+      phone,
+      age: parsedAge,
+      address,
+      city,
+      county,
+      eircode,
+      email,
+      createdAt: new Date().toISOString()
+    };
+
+    // ----------------------------------------------------------------------
+    // Call the Identity service to create Firebase Auth user (email + pass)
+    // ----------------------------------------------------------------------
     this.identity.register(email, pass)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         console.log('Registration OK:', userCredential.user);
 
-        // Redirect user to the home tab after successful registration
-        this.router.navigateByUrl('/tabs/tab1'); // Change to tab2 if preferred
+        const user = userCredential.user;
+        const uid = user?.uid;
+
+        // ------------------------------------------------------------------
+        // After Auth account is created, save the profile data in Firestore
+        // using the same uid so that the Profile tab can read it later.
+        // ------------------------------------------------------------------
+        if (uid) {
+          try {
+            await this.identity.saveUserProfile(uid, profileData);
+          } catch (err) {
+            console.error('Error saving profile data after registration:', err);
+            // We do not block navigation on this error, but we log it.
+          }
+        } else {
+          console.warn('Registration succeeded but no uid was returned.');
+        }
+
+        // ------------------------------------------------------------------
+        // Redirect user to the main tab (tab1) after successful registration
+        // ------------------------------------------------------------------
+        this.router.navigateByUrl('/tabs/tab1');
       })
       .catch((error) => {
         console.error('Register error:', error);
