@@ -1,0 +1,44 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: urbanestate-frontend
+    ports:
+      - "8080:80"        # host:container → http://localhost:8080
+    depends_on:
+      - api
+    networks:
+      - urban-net
+
+  api:
+    build: ./api
+    container_name: urbanestate-api
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=urbanestate
+      - DB_PASS=password123
+      - DB_NAME=urbanestate_db
+    ports:
+      - "3000:3000"      # http://localhost:3000
+    depends_on:
+      - db
+    networks:
+      - urban-net
+
+  db:
+    image: postgres:16-alpine
+    container_name: urbanestate-db
+    environment:
+      - POSTGRES_USER=urbanestate
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=urbanestate_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - urban-net
+
+networks:
+  urban-net:
+
+volumes:
+  db_data:
