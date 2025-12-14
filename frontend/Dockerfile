@@ -14,11 +14,14 @@ RUN npm install --legacy-peer-deps
 # Copy the rest of the frontend project
 COPY . .
 
-# Build the app using "build" script from package.json (ng build)
+# Build the app using "build" script from package.json (ng build / ionic build)
 RUN npm run build
 
 # Stage 2: Nginx to serve the built app
 FROM nginx:alpine
+
+# Use custom nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Remove default Nginx static files
 RUN rm -rf /usr/share/nginx/html/*
