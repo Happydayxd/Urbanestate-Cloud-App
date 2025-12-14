@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+    // Firebase config (client-side config, not a secret)
+  firebase: {
+    apiKey: 'YOUR_FIREBASE_API_KEY',          // // Replace locally
+    projectId: 'YOUR_FIREBASE_PROJECT_ID',    // // Replace locally
+  },
+
+  // Google Maps API Key (MUST be restricted in Google Cloud Console)
+  googleMapsApiKey: 'YOUR_GOOGLE_MAPS_API_KEY', // // Replace locally
 };
 
 /*

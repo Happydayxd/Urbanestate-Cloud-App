@@ -5,6 +5,8 @@ import { initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 // Firebase Firestore functions to store profile data for each user
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+//Import env config
+import { environment } from '../../../environments/environment'; 
 
 @Injectable({
   providedIn: 'root',
@@ -15,12 +17,8 @@ export class Identity {
   // This identifies your Firebase project.
   // Only apiKey and projectId are needed for basic Firebase Auth in this CA.
   private firebaseApp = {
-    apiKey: "AIzaSyCsk-JTvq9mxE6o-S4xokSgqs102pMLygk",
-    //authDomain: "b8is138-mon-ionic-f8600.firebaseapp.com",
-    projectId: "b8is138-mon-ionic-f8600",
-    //storageBucket: "b8is138-mon-ionic-f8600.firebasestorage.app",
-    //messagingSenderId: "926442267487",
-    //appId: "1:926442267487:web:bcf8d21c3a733d10ef0cea"
+  apiKey: environment.firebase.apiKey,     //Read from environment
+  projectId: environment.firebase.projectId
   };
   // --------------------------------------------------------------------------
 
