@@ -16,11 +16,7 @@ export class Identity {
   // Only apiKey and projectId are needed for basic Firebase Auth in this CA.
   private firebaseApp = {
     apiKey: "YOUR_FIREBASE_API_KEY",
-    //authDomain: "b8is138-mon-ionic-f8600.firebaseapp.com",
     projectId: "YOUR_FIREBASE_PROJECT_ID",
-    //storageBucket: "b8is138-mon-ionic-f8600.firebasestorage.app",
-    //messagingSenderId: "926442267487",
-    //appId: "1:926442267487:web:bcf8d21c3a733d10ef0cea"
   };
   // --------------------------------------------------------------------------
 
