@@ -4,8 +4,6 @@
 
 For the **Cloud Platform Development Continuous Assessment**, the project has been adapted into a **containerised, cloud-deployable application** using **Docker** and **Docker Compose**. It integrates with **Firebase Authentication** and **Firestore** as managed cloud services to demonstrate a modern hybrid architecture.
 
-> **Note:** This project focuses on clarity, correctness, and reproducibility, avoiding unnecessary architectural complexity.
-
 ---
 
 ## ☁️ 1. Cloud Architecture Overview
