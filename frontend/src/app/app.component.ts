@@ -17,9 +17,10 @@ export class AppComponent {
   imports: [
     CommonModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDBO1qHRd6TXqE_ppTDvWjUPTM9Vgw91Kw',
+      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY',
     }),
   ],
   exports: [AgmCoreModule],
 })
+
 export class MapModule {}

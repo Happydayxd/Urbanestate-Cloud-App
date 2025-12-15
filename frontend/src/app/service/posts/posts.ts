@@ -10,8 +10,8 @@ export class Posts {
   public data: any = [];
 
   private firebaseConfig = {
-    apiKey: "AIzaSyCsk-JTvq9mxE6o-S4xokSgqs102pMLygk",
-    projectId: "b8is138-mon-ionic-f8600",
+    apiKey: "YOUR_FIREBASE_API_KEY",
+    projectId: "YOUR_FIREBASE_PROJECT_ID",
   };
   private app: any;
   private db: any;
