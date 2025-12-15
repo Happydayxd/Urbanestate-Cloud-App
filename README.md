@@ -1,28 +1,42 @@
-🏡 UrbanEstate Cloud App
+🏡 UrbanEstate – Cloud Platform Deployment Project
 
-UrbanEstate is a mobile-style web application built with Ionic + Angular that allows users to browse real-estate properties, save favourites, book viewings, and add new property listings.
+UrbanEstate is a mobile-style web application built with Ionic + Angular, allowing users to browse real-estate properties, add new listings, view property details, and manage user accounts.
 
-For the Cloud Platform Development CA, the project has been adapted into a containerised, cloud-deployable application using Docker and Docker Compose, and integrates with Firebase Authentication and Firestore as managed cloud services.
+For the Cloud Platform Development Continuous Assessment, the project has been adapted into a containerised, cloud-deployable application using Docker and Docker Compose, and integrates with Firebase Authentication and Firestore as managed cloud services.
+
+This project focuses on clarity, correctness, and reproducibility, rather than unnecessary architectural complexity.
 
 ☁️ 1. Cloud Architecture Overview
 
-UrbanEstate follows a simple cloud-native architecture, focusing on clarity rather than complexity.
+UrbanEstate follows a simple cloud-native architecture:
 
-Architecture summary:
+Architecture Summary
 
-Frontend Container: Ionic + Angular application built and served using Nginx
+Frontend Container
 
-External Cloud Services:
+Ionic + Angular application
 
-Firebase Authentication – user login & registration
+Built with Node.js
 
-Firestore (NoSQL) – property listings and application data
+Served using Nginx in production
 
-Container Orchestration: Docker Compose
+External Managed Cloud Services
 
-Deployment Target: Google Cloud VM (Compute Engine)
+Firebase Authentication – login & registration
 
-This demonstrates a hybrid cloud approach, where containers are used for the application runtime while Firebase provides fully managed backend services.
+Firestore (NoSQL) – property listings and user data
+
+Container Orchestration
+
+Docker Compose
+
+Deployment Target
+
+Google Cloud Platform (Compute Engine VM)
+
+This demonstrates a hybrid cloud approach:
+
+Containers for the application runtime + managed cloud services for authentication and data storage.
 
 🛠️ 2. Tech Stack
 Frontend
@@ -43,86 +57,94 @@ Containerisation: Docker
 
 Orchestration: Docker Compose
 
-Web Server: Nginx (production-style static hosting)
+Web Server: Nginx
 
-Cloud Provider: Google Cloud Platform
+Cloud Provider: Google Cloud Platform (GCP)
 
 📁 3. Project Structure
-
-The project root (CA1/) is organised as follows:
-
 CA1/
-├── docker-compose.yml        # Orchestrates the frontend container
+├── docker-compose.yml        # Orchestrates frontend container
 ├── frontend/                 # Ionic + Angular application
-│   ├── Dockerfile            # Multi-stage build (Node -> Nginx)
-│   ├── nginx.conf            # Nginx config for Angular routing
+│   ├── Dockerfile            # Multi-stage build (Node → Nginx)
+│   ├── nginx.conf            # Angular routing support
 │   ├── package.json
 │   ├── src/
 │   └── ...
 ├── .dockerignore
 └── README.md
 
+Notes
 
-Key notes:
+The frontend container is fully self-contained
 
-The frontend container is fully self-contained.
+Firebase & Firestore are external managed services
 
-Firebase & Firestore are external managed cloud services and are not containerised.
-
-No backend API or SQL database is required for this version of the project.
+No backend API or SQL database is required for this CA
 
 ✅ 4. Prerequisites
-
-The following tools are required to run or deploy the project:
-
-Tool	Recommended Version	Check Command
+Tool	Version	Check
 Git	Latest	git --version
-Node.js & npm	LTS (20.x)	node -v / npm -v
+Node.js & npm	20.x (LTS)	node -v
 Docker Desktop	Latest	docker version
 Docker Compose	Latest	docker compose version
 
-💻 5. Local Development (Without Docker)
+🔑 5. Configuration (Firebase & Google Maps)
 
-This mode is intended for frontend development only.
+Before running the application, the following API keys must be configured manually.
 
-# Navigate to frontend
+Files requiring configuration:
+
+- `frontend/src/app/app.component.ts` (Google Maps API key)
+- `frontend/src/app/service/identity.ts` (Firebase config)
+- `frontend/src/app/service/posts/posts.ts` (Firestore config)
+
+Replace the placeholder values:
+
+```ts
+apiKey: 'YOUR_FIREBASE_API_KEY'
+projectId: 'YOUR_FIREBASE_PROJECT_ID'
+googleMapsApiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+```
+💻 5.1 Local Development (Without Docker)
+
+Used for frontend development only.
+
+# Navigate to frontend folder
 cd frontend
 
 # Install dependencies
 npm install
 
-# Run Ionic development server
+# Start Ionic development server
 ionic serve
-# OR
-npm start
 
-
-The app will be available at:
+App runs at:
 
 http://localhost:8100
 
-🚀 6. Containerised Deployment (Docker + Docker Compose)
+🚀 6. Containerised Deployment (Docker)
+
 6.1 Frontend Dockerfile
 
 The frontend uses a multi-stage Docker build:
 
 Stage 1 – Build
 
-Uses node:20-alpine
+node:20-alpine
 
 Installs dependencies
 
-Builds the Ionic/Angular app (npm run build)
+Builds Ionic/Angular app (npm run build)
 
 Stage 2 – Serve
 
-Uses nginx:alpine
+nginx:alpine
 
-Serves the compiled app from /usr/share/nginx/html
+Serves compiled app from /usr/share/nginx/html
 
-Uses try_files for Angular/Ionic routing support
+Supports Angular/Ionic routing (try_files)
 
-This results in a small, production-ready container image.
+This produces a small, production-ready container image.
 
 6.2 Docker Compose Configuration
 
@@ -133,57 +155,62 @@ services:
     build: ./frontend
     container_name: urbanestate-frontend
     ports:
-      - "8080:80"
+      - "80:80"
+      - "443:443"
 
 
-The app is accessible at http://localhost:8080
+The application is available at:
 
-Firebase services are accessed securely over HTTPS
+https://localhost
 
-6.3 Build & Run the Container
+6.3 Build & Run
 
 From the project root (CA1/):
 
-# Build the Docker image
+# Build the image
 docker compose build
 
 # Run the container
 docker compose up -d
 
 
-Access the application at:
-
-http://localhost:8080
-
-
-To stop the container:
+To stop:
 
 docker compose down
 
 🔥 7. Firebase & Firestore Integration
 
-UrbanEstate uses Firebase as a managed backend, removing the need for a traditional server-side API.
+UrbanEstate uses Firebase as a managed backend, eliminating the need for a traditional API.
 
 Firebase Authentication
 
-Email/password authentication
+Email & password login
 
-Used for login and registration
+Registration and logout
 
-Firestore (NoSQL Database)
+Used by Login, Register, and Profile tabs
+
+Firestore (NoSQL)
 
 Stores property listings
 
-Flexible, schema-less document model
+Stores user profile data
 
-Data is created dynamically via the “Add Property” form
+Schema-less document model
 
-Important:
-Firebase is configured manually via the Firebase Console, which is acceptable for this assessment and clearly documented.
+Data added dynamically via Add Property form
+
+Configuration Notes
+
+Firebase setup is done manually via Firebase Console
+
+API keys and project IDs are configured directly in the frontend
+
+This approach is acceptable for this assessment
 
 ☁️ 8. Google Cloud Deployment
 
-For the Cloud Platform CA, the application is deployed on Google Cloud Compute Engine using Docker.
+For the Cloud Platform Development CA, UrbanEstate is deployed on Google Cloud Compute Engine using Docker.
 
 Deployment Steps (Summary)
 
@@ -191,18 +218,18 @@ Create a Google Cloud VM
 
 Install Docker & Docker Compose
 
-Clone this GitHub repository
+Open firewall port 80 & 443
+
+Clone this repository
 
 Run:
 
 docker compose up -d
 
 
-Open firewall port 8080
+Access the app using the VM’s public IP:
 
-Access the app using the VM’s public IP
-
-This satisfies the requirement to deploy a containerised application in the cloud.
+https://<VM_PUBLIC_IP>
 
 🔐 9. Security Notes
 
@@ -210,22 +237,26 @@ Firebase handles authentication securely
 
 Firestore security rules control read/write access
 
-No secrets are hard-coded inside Docker images
+No SQL databases or credentials are exposed
 
 Containers expose only required ports
 
+API keys are used according to Firebase best practices
+
 ✨ 10. Summary
 
-This repository demonstrates:
+This project demonstrates:
 
-✅ Containerisation with Docker
+✅ Docker containerisation
 
 ✅ Cloud deployment on Google Cloud
 
 ✅ Use of managed cloud services (Firebase & Firestore)
 
-✅ Separation of application and data layers
+✅ NoSQL database usage
 
-✅ Simple, reproducible deployment using Docker Compose
+✅ Simple, reproducible deployment
 
-UrbanEstate provides a clear and practical demonstration of cloud deployment concepts suitable for the Cloud Platform Development module.
+✅ Clean separation of concerns
+
+UrbanEstate provides a clear, practical, and appropriate demonstration of cloud deployment principles for the Cloud Platform Development module.

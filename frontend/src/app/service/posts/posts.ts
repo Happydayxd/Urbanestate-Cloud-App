@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import { environment } from '../../../environments/environment'; //Import env config
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +10,8 @@ export class Posts {
   public data: any = [];
 
   private firebaseConfig = {
-    apiKey: environment.firebase.apiKey,     //Read from environment
-    projectId: environment.firebase.projectId
+    apiKey: "AIzaSyCsk-JTvq9mxE6o-S4xokSgqs102pMLygk",
+    projectId: "b8is138-mon-ionic-f8600",
   };
   private app: any;
   private db: any;

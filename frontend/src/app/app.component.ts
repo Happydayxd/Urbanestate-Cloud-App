@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { AgmCoreModule } from 'ng-agm-core-lib';
-import { environment } from '../environments/environment'; //Adjust path based on where MapModule is
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,7 @@ import { environment } from '../environments/environment'; //Adjust path based o
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
-  constructor() { }
+  constructor() {}
 }
 
 @NgModule({
@@ -18,10 +17,10 @@ export class AppComponent {
   imports: [
     CommonModule,
     AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsApiKey, //Read from environment
+      apiKey: 'AIzaSyDBO1qHRd6TXqE_ppTDvWjUPTM9Vgw91Kw',
     }),
   ],
   exports: [AgmCoreModule],
 })
 
-export class MapModule { }
+export class MapModule {}
