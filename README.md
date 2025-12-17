@@ -120,8 +120,6 @@ Before deploying, you must set up a Firebase project to generate the required AP
 
 ☁️ 5. Installation Guide (Google Cloud)
 
-<div align="center"> <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQ9NiuLiyKwl7vVvmfJS_XKH7ef9e-8pBcyshVqh15C1Yo3Q7IeRqcz_FIt-3iOLOQ0ci2PwvwSBs-g_WgLwajJ4faXwmFBeO06tHuWB5s73sLOU8w" width="80" alt="Google Cloud Logo">
-
 <em>Deployment Target: Compute Engine</em> </div>
 
 Follow these steps to deploy the application from scratch on a new VM.
@@ -138,6 +136,25 @@ Follow these steps to deploy the application from scratch on a new VM.
     Firewall: Check ☑️ Allow HTTP traffic and ☑️ Allow HTTPS traffic.
 
     Click Create.
+
+5.1.1 Configure Host Firewall (UFW)
+
+Once SSH'd into the VM via the Google Cloud Console, secure the host by configuring the UFW (Uncomplicated Firewall) to strictly allow only web traffic.
+Bash
+
+# 1. Allow HTTP (Web)
+sudo ufw allow 80/tcp
+
+# 2. Allow HTTPS (Secure Web)
+sudo ufw allow 443/tcp
+
+# 3. Enable the firewall
+sudo ufw enable
+
+# 4. Verify status
+sudo ufw status
+
+    Note: Google Cloud's browser-based SSH console for administrative access.
 
 5.2 Install Docker on the VM
 
