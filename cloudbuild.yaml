@@ -1,7 +1,7 @@
 substitutions:
-  _REGION: europe-west1
+  _REGION: europe-west2
   _REPO: urbanestate-repo
-  _ZONE: europe-west1-b
+  _ZONE: europe-west2-a
   _VM_NAME: urbanestate-vm
 
 steps:
@@ -23,7 +23,7 @@ steps:
         "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/urbanestate-frontend:$COMMIT_SHA"
       ]
 
-  # 3) Create VM once (if missing) and open container on port 80
+  # 3) Create VM once (if missing)
   - name: "gcr.io/cloud-builders/gcloud"
     entrypoint: "bash"
     args:
@@ -34,13 +34,13 @@ steps:
           gcloud compute instances create-with-container "${_VM_NAME}" \
             --zone "${_ZONE}" \
             --machine-type "e2-micro" \
-            --tags "http-server" \
+            --tags "http-server,https-server" \
             --container-image "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/urbanestate-frontend:$COMMIT_SHA" \
             --container-restart-policy=always \
             --container-port=80
         fi
 
-  # 4) Update VM to the new image every build
+  # 4) Update VM container to latest image every build
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
@@ -51,3 +51,7 @@ steps:
 
 images:
   - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/urbanestate-frontend:$COMMIT_SHA"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
