@@ -15,7 +15,7 @@ steps:
         "./frontend"
       ]
 
-  # 2) Push image
+  # 2) Push image to Artifact Registry
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
@@ -23,7 +23,7 @@ steps:
         "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/urbanestate-frontend:$COMMIT_SHA"
       ]
 
-  # 3) Create VM once (if missing)
+  # 3) Create VM once (if missing) running the container
   - name: "gcr.io/cloud-builders/gcloud"
     entrypoint: "bash"
     args:
@@ -40,7 +40,7 @@ steps:
             --container-port=80
         fi
 
-  # 4) Update VM container to latest image every build
+  # 4) Update the VM container to the new image every build
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
