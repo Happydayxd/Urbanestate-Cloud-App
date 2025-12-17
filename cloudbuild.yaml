@@ -5,7 +5,7 @@ substitutions:
   _VM_NAME: urbanestate-vm
 
 steps:
-  # 1) Build image
+  # 1) Build image from Dockerfile
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
