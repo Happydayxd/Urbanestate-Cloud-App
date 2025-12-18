@@ -2,19 +2,15 @@ steps:
   # ==========================================================
   # Step 1: Inject Secrets (Replace Placeholders)
   # ==========================================================
-  # This securely replaces the placeholder text in your Angular files 
-  # with the actual API keys stored in Cloud Build Substitutions.
   - name: 'ubuntu'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
+        echo "Injecting secrets..."
         sed -i 's/YOUR_FIREBASE_API_KEY/${_FIREBASE_API_KEY}/g' frontend/src/app/service/identity/identity.ts
         sed -i 's/YOUR_FIREBASE_PROJECT_ID/${_FIREBASE_PROJECT_ID}/g' frontend/src/app/service/identity/identity.ts
         sed -i 's/YOUR_GOOGLE_MAPS_API_KEY/${_MAPS_API_KEY}/g' frontend/src/app/app.component.ts
-        
-        # Verify replacement (optional debug, allows seeing if it worked in logs - be careful not to log full keys)
-        echo "Secrets injected into source code."
 
   # ==========================================================
   # Step 2: Build the Docker Image
@@ -50,6 +46,12 @@ steps:
       - '--allow-unauthenticated'
       - '--port'
       - '80'
+
+# ==========================================================
+# Config: Logging Options (The Fix for your Error)
+# ==========================================================
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 # ==========================================================
 # Config: Substitutions (Variables)
