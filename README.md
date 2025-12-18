@@ -1,43 +1,46 @@
-🏡 UrbanEstate – Cloud Platform Deployment Project
+# 🏡 UrbanEstate – Cloud Platform Deployment Project
 
-UrbanEstate is a mobile-style web application built with Ionic + Angular, allowing users to browse real-estate properties, add new listings, view property details, and manage user accounts.
+**UrbanEstate** is a mobile-style web application built with **Ionic + Angular**, allowing users to browse real-estate properties, add new listings, view property details, and manage user accounts.
 
-For the Cloud Platform Development Continuous Assessment, this project has been transformed into a containerised, cloud-native application capable of both VM-based deployment and serverless automated deployment using Google Cloud Run.
-☁️ 1. Cloud Architecture Overview
+For the **Cloud Platform Development Continuous Assessment**, this project has been transformed into a **containerised, cloud-native application** capable of both VM-based deployment and serverless automated deployment using **Google Cloud Run**.
 
-UrbanEstate follows a hybrid cloud architecture, combining portable containers with scalable managed backend services.
+---
 
-Architecture Summary
-Component	Technology	Description
-Frontend Container	Ionic + Angular	Built with Node.js, served via Nginx (Alpine).
-Auth Service	Firebase Auth	Handles secure user login & registration (External).
-Database	Firestore (NoSQL)	Stores property listings & user profiles (External).
-CI/CD Pipeline	Cloud Build	Automates testing, building, and deploying.
-Hosting	Cloud Run / GCE	Serverless container hosting (Auto-scaling).
-🛠️ 2. Tech Stack
-Frontend & App
+## ☁️ 1. Cloud Architecture Overview
 
-    Framework: Ionic + Angular
+UrbanEstate follows a **hybrid cloud architecture**, combining portable containers with scalable managed backend services.
 
-    Language: TypeScript
+### Architecture Summary
 
-    Styling: Custom SCSS (UrbanEstate UI)
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Frontend Container** | Ionic + Angular | Built with Node.js, served via **Nginx** (Alpine). |
+| **Auth Service** | Firebase Auth | Handles secure user login & registration (External). |
+| **Database** | Firestore (NoSQL) | Stores property listings & user profiles (External). |
+| **CI/CD Pipeline** | Cloud Build | Automates testing, building, and deploying. |
+| **Hosting** | Cloud Run / GCE | Serverless container hosting (Auto-scaling). |
 
-    External Services: Firebase Authentication, Firestore
+---
 
-Cloud & DevOps
+## 🛠️ 2. Tech Stack
 
-    Containerisation: Docker (Multi-stage builds)
+### Frontend & App
+* **Framework:** Ionic + Angular
+* **Language:** TypeScript
+* **Styling:** Custom SCSS (UrbanEstate UI)
+* **External Services:** Firebase Authentication, Firestore
 
-    Orchestration: Docker Compose (Local/VM) & Cloud Build (Cloud)
+### Cloud & DevOps
+* **Containerisation:** Docker (Multi-stage builds)
+* **Orchestration:** Docker Compose (Local/VM) & Cloud Build (Cloud)
+* **Infrastructure:** Google Cloud Run (Serverless) & Compute Engine (VM)
+* **Secret Management:** Cloud Build Substitutions
 
-    Infrastructure: Google Cloud Run (Serverless) & Compute Engine (VM)
+---
 
-    Secret Management: Cloud Build Substitutions
+## 📁 3. Project Structure
 
-📁 3. Project Structure
-Plaintext
-
+```text
 CA1/
 ├── cloudbuild.yaml           # CI/CD Pipeline definition for Google Cloud
 ├── docker-compose.yml        # Orchestration for local/VM testing
@@ -160,7 +163,7 @@ newgrp docker
 6.3 Clone & Configure
 Bash
 
-git clone https://github.com/Happydayxd/Urbanestate-Cloud-App.git
+git clone [https://github.com/Happydayxd/Urbanestate-Cloud-App.git](https://github.com/Happydayxd/Urbanestate-Cloud-App.git)
 cd Urbanestate-Cloud-App
 
 ⚠️ Important: For manual deployment, you must manually edit the configuration files to add your keys.
